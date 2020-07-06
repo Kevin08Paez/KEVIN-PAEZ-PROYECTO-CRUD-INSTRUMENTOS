@@ -74,6 +74,8 @@
         <div class="container show-top-margin separate-rows tall-rows">
             <a class="btn btn-success btn-black" href="">Agregar Instrumento </a>
             <a class="btn btn-secondary btn-black" href="catalogoMarca.jsp">Catálogo de Marcas</a>     
-        </div>    
+        </div>
+
+            
     </body>
 </html>
