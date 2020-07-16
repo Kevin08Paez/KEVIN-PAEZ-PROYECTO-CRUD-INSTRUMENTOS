@@ -28,6 +28,23 @@ public class Instrumento {
         this.descripcion = descripcion;
     }
 
+    public Instrumento(String nombre, String marca, Double precio, String descripcion) {
+        this.nombre = nombre;
+        this.marca = marca;
+        this.precio = precio;
+        this.descripcion = descripcion;
+    }
+
+    public Instrumento(int idInstru) {
+        this.idInstru = idInstru;
+    }
+
+    public Instrumento(int idInstru, String nombre, String marca) {
+        this.idInstru = idInstru;
+        this.nombre = nombre;
+        this.marca = marca;
+    }
+
     public int getIdInstru() {
         return idInstru;
     }

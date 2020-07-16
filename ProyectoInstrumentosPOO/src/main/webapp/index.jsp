@@ -7,8 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="Dao.Instrumento"%>
-<%@page import="Dao.InstrumentoBD"%>
+<%@page import="Dao.*"%>
 <!DOCTYPE html>
 <%
     List<Instrumento> instrumentos = new InstrumentoBD().ListadoInstrumento();
@@ -63,8 +62,8 @@
                         <td scope="row"><%=instrumento.getMarca()%></td>
                         <td scope="row"><%=instrumento.getPrecio()%></td>
                         <td scope="row"><%=instrumento.getDescripcion()%></td>
-                        <td><a class="btn btn-warning btn-block" href="index.jsp?idInstru=<%=instrumento.getIdInstru()%>">Editar Instrumento</a></td>
-                        <td><a class="btn btn-danger btn-block" href="index.jsp?idInstru=<%=instrumento.getIdInstru()%>"> Eliminar Instrumento</a></td>
+                        <td><a class="btn btn-warning btn-block" href="formularioInstrumentos.jsp?idInstru=<%=instrumento.getIdInstru()%>">Editar Instrumento</a></td>
+                        <td><a class="btn btn-danger btn-block" href="eliminarInstrumento.jsp?idInstru=<%=instrumento.getIdInstru()%>"> Eliminar Instrumento</a></td>
                     </tr>
                 </tbody>
                 <%}%>
@@ -72,7 +71,7 @@
         </div>
         <br>
         <div class="container show-top-margin separate-rows tall-rows">
-            <a class="btn btn-success btn-black" href="">Agregar Instrumento </a>
+            <a class="btn btn-success btn-black" href="formularioInstrumentos.jsp">Agregar Instrumento </a>
             <a class="btn btn-secondary btn-black" href="catalogoMarca.jsp">Catálogo de Marcas</a>     
         </div>
 
