@@ -22,6 +22,11 @@ public class Catalogo {
         this.marca = marca;
     }
 
+    public Catalogo(int idMarca) {
+        this.idMarca = idMarca;
+    }
+    
+    
     public int getIdMarca() {
         return idMarca;
     }

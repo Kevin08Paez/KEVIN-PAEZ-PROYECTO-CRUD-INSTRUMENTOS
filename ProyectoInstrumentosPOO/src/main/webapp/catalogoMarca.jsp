@@ -7,8 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="Dao.Catalogo"%>
-<%@page import="Dao.CatalogoBD"%>
+<%@page import="Dao.*"%>
 <!DOCTYPE html>
 <%
     List<Catalogo> catalogo = new CatalogoBD().ListadoCatalogo();
@@ -45,15 +44,15 @@
                     <tr>
                         <td scope="row"><%= cat.getIdMarca() %></td>
                         <td scope="row"><%= cat.getMarca() %></td>
-                        <td><a class="btn btn-warning btn-block" href="catalogoMarca.jsp?idInstru=<%=cat.getIdMarca()%>">Editar Marca</a></td>
-                        <td><a class="btn btn-danger btn-block" href="catalogoMarca.jsp?idInstru=<%=cat.getIdMarca()%>"> Eliminar Marca</a></td>
+                        <td><a class="btn btn-warning btn-block" href="formularioMarcas.jsp?idMarca=<%=cat.getIdMarca()%>">Editar Marca</a></td>
+                        <td><a class="btn btn-danger btn-block" href="eliminarMarca.jsp?idMarca=<%=cat.getIdMarca()%>"> Eliminar Marca</a></td>
                     </tr>
                 </tbody>
                 <%}%>
             </table>
         </div>
         <div class="container show-top-margin separate-rows tall-rows">
-            <a class="btn btn-success btn-black" href="">Agregar Marca</a>
+            <a class="btn btn-success btn-black" href="formularioMarcas.jsp">Agregar Marca</a>
             <a class="btn btn-secondary btn-black" href="index.jsp">Regresar</a> 
         </div> 
         

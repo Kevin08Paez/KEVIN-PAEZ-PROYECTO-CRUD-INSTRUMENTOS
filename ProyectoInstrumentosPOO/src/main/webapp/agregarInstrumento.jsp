@@ -25,7 +25,7 @@
                 if(resultado){
             %>
             <div class="alert alert-success" colspan="2">
-                <h2>Se agrego exitosamente el Instrumento</h2>
+                <h2>Se agregó exitosamente el Instrumento</h2>
             </div>
             <%
                 }else{

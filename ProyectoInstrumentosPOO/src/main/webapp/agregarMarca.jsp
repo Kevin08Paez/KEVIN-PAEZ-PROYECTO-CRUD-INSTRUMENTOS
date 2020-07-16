@@ -1,22 +1,22 @@
 <%-- 
-    Document   : editarInstrumento
-    Created on : 15 jul. 2020, 19:04:19
+    Document   : agregarMarca
+    Created on : 15 jul. 2020, 22:00:41
     Author     : Kevin_Paez
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Dao.*"%>
 <!DOCTYPE html>
 <%
     boolean resultado;
-    InstrumentoBD instrumento = new InstrumentoBD();
-    resultado = instrumento.EditarInstrumento(new Instrumento(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"), request.getParameter("idmarca")));
+    CatalogoBD catalogo = new CatalogoBD();
+    resultado = catalogo.InsertarMarca(new Catalogo(request.getParameter("marca")) );
 %>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <title>Editar Instrumento</title>
+        <title>Agregar Marca</title>
     </head>
     <body>
         <br><br>
@@ -25,7 +25,7 @@
                 if(resultado){
             %>
             <div class="alert alert-success" colspan="2">
-                <h2>Se modificó exitosamente el Instrumento</h2>
+                <h2>La marca se agregó exitosamente</h2>
             </div>
             <%
                 }else{
@@ -37,7 +37,7 @@
                 }
             %>  
             <div>
-               <a class="btn btn-success btn-black" href="index.jsp">Regresar</a>
+               <a class="btn btn-success btn-black" href="catalogoMarca.jsp">Regresar</a>
             </div>
         </div>
     </body>
