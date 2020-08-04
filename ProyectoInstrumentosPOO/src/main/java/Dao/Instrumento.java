@@ -14,24 +14,27 @@ public class Instrumento {
     private String nombre;
     private String marca;
     private Double precio;
+    private int cantidad;
     private String descripcion;
     
     public Instrumento(){
         
     }
 
-    public Instrumento(int idInstru, String nombre, String marca, Double precio, String descripcion) {
+    public Instrumento(int idInstru, String nombre, String marca, Double precio, int cantidad, String descripcion ) {
         this.idInstru = idInstru;
         this.nombre = nombre;
         this.marca = marca;
         this.precio = precio;
+        this.cantidad = cantidad;
         this.descripcion = descripcion;
     }
 
-    public Instrumento(String nombre, String marca, Double precio, String descripcion) {
+    public Instrumento(String nombre, String marca, Double precio, int cantidad, String descripcion) {
         this.nombre = nombre;
         this.marca = marca;
         this.precio = precio;
+        this.cantidad = cantidad;
         this.descripcion = descripcion;
     }
 
@@ -84,7 +87,15 @@ public class Instrumento {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
+    
+    public int getCantidad(){
+        return cantidad;
+    }
+    
+    public void setCantidad(int cantidad){
+        this.cantidad = cantidad;
+    }
+    
     @Override
     public String toString() {
         return "Instrumento{" + "idInstru=" + idInstru + ", nombre=" + nombre + ", marca=" + marca + ", precio=" + precio + ", descripcion=" + descripcion + '}';

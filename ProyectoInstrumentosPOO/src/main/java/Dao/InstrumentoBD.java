@@ -11,8 +11,8 @@ import Config.Conexion;
  */
 public class InstrumentoBD {
     private static final String Listado="SELECT instrumentos.idInstru, instrumentos.nombre, cat_marca.marca,"
-            +"instrumentos.precio, instrumentos.descripcion FROM instrumentos JOIN cat_marca ON instrumentos.id_marca=cat_marca.idMarca ";
-    private static final String Insertado="INSERT INTO instrumentos SET nombre=?, id_marca=?, precio=?, descripcion=?";
+            +"instrumentos.precio, instrumentos.cantidad, instrumentos.descripcion FROM instrumentos JOIN cat_marca ON instrumentos.id_marca=cat_marca.idMarca ";
+    private static final String Insertado="INSERT INTO instrumentos SET nombre=?, id_marca=?, precio=?, cantidad=?, descripcion=?";
     private static final String Buscar="SELECT * FROM instrumentos WHERE idInstru=?";
     private static final String EditarInstru="UPDATE instrumentos SET nombre=?, id_marca=? WHERE idInstru=? ";
     private static final String Eliminar="DELETE FROM instrumentos WHERE idInstru=?";
@@ -25,7 +25,7 @@ public class InstrumentoBD {
         this.stmt=this.conexion.prepareStatement(this.Listado); 
         this.rs=this.stmt.executeQuery();
         while (this.rs.next()){
-            instrumentos.add(new Instrumento(this.rs.getInt("idInstru"), this.rs.getString("nombre"), this.rs.getString("marca"), this.rs.getDouble("precio"), this.rs.getString("descripcion"))); 
+            instrumentos.add(new Instrumento(this.rs.getInt("idInstru"), this.rs.getString("nombre"), this.rs.getString("marca"), this.rs.getDouble("precio"), this.rs.getInt("cantidad"), this.rs.getString("descripcion"))); 
         }   
         return instrumentos;
     }  
@@ -36,7 +36,8 @@ public class InstrumentoBD {
         this.stmt.setString(1, instrumento.getNombre());
         this.stmt.setString(2, instrumento.getMarca());
         this.stmt.setDouble(3, instrumento.getPrecio());
-        this.stmt.setString(4, instrumento.getDescripcion());
+        this.stmt.setInt(4, instrumento.getCantidad());
+        this.stmt.setString(5, instrumento.getDescripcion());
         
         if(this.stmt.executeUpdate()==1){
             return true;
@@ -55,6 +56,18 @@ public class InstrumentoBD {
         
         return nom;
     }
+    
+    public Double BuscarPrecio(Instrumento instrumento) throws SQLException{
+        Double precio;
+        this.stmt=this.conexion.prepareStatement(Buscar);
+        this.stmt.setInt(1, instrumento.getIdInstru());
+        this.rs=this.stmt.executeQuery();
+        this.rs.next();
+        precio=this.rs.getDouble("precio");
+        
+        return precio;
+    }
+    
     
     public boolean EditarInstrumento(Instrumento instrumento) throws SQLException{
         this.stmt=this.conexion.prepareStatement(EditarInstru);

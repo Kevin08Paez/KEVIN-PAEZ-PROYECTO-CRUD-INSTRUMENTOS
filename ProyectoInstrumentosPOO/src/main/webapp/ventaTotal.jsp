@@ -1,22 +1,25 @@
 <%-- 
-    Document   : agregarInstrumento
-    Created on : 15 jul. 2020, 8:13:57
+    Document   : ventaTotal
+    Created on : 3 ago. 2020, 18:24:45
     Author     : Kevin_Paez
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Dao.*"%>
 <!DOCTYPE html>
 <%
-    boolean resultado;
-    InstrumentoBD instrumento = new InstrumentoBD();
-    resultado = instrumento.InsertarInstrumento(new Instrumento(request.getParameter("nombre"), request.getParameter("idmarca"), Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("cantidad")), request.getParameter("desc")));
+    boolean resultado, result2;
+    VentaTotalBD venta = new VentaTotalBD();
+    resultado = venta.InsertarVenta(new VentaTotal(Integer.parseInt(request.getParameter("idInstru")), request.getParameter("nombre"), Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("cantidad")), Double.parseDouble(request.getParameter("total"))  ));
+    
+    VentaTotalBD update = new VentaTotalBD();
+    result2= update.ActualizarDatos(new VentaTotal(Integer.parseInt(request.getParameter("idInstru")) )); 
 %>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <title>Agregar Instrumento</title>
+        <title>JSP Page</title>
     </head>
     <body>
         <br><br>
@@ -25,7 +28,7 @@
                 if(resultado){
             %>
             <div class="alert alert-success" colspan="2">
-                <h2>Se agregó exitosamente el Instrumento</h2>
+                <h2>Se Compró exitosamente el Instrumento</h2>
             </div>
             <%
                 }else{

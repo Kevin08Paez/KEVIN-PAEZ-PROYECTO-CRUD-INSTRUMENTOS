@@ -12,6 +12,7 @@
     List<Catalogo> catalogo = new CatalogoBD().ListadoCatalogo();
     String titulo = "Agregar Instrumento", nom = "";
     String ruta = "agregarInstrumento.jsp";
+
     int id = 0;
     if (request.getParameter("idInstru") != null) {
         id = Integer.parseInt(request.getParameter("idInstru"));
@@ -19,6 +20,7 @@
         ruta = "editarInstrumento.jsp";
         InstrumentoBD instrumento = new InstrumentoBD();
         nom = instrumento.BuscarInstrumento(new Instrumento(Integer.parseInt(request.getParameter("idInstru"))));
+
     }
 %>
 <html>
@@ -39,24 +41,25 @@
                 <div class="form-group">
                     <input type="text" value="<%=nom%>" class="form-control" placeholder="Nombre Instrumento" name="nombre" required/>
                 </div>
-
-                <div class="dropdown">
-                    <select name="idmarca" required>
-                        <option class="dropdown-item" value="">Elige una Marca</option>
+                <div class="form-group">
+                    <select class="form-control" name="idmarca" required >
+                        <option value="">Selecciona una opción</option>
                         <%
                             for (Catalogo cat : catalogo) {
                         %>
-                        <option class="dropdown-item" value="<%= cat.getIdMarca()%>"> <%= cat.getMarca()%> </option>
+                        <option value="<%= cat.getIdMarca()%>"> <%= cat.getMarca()%> </option>
                         <%
                             }
                         %>   
                     </select>
                 </div>
-                <br>
 
                 <% if (id == 0) { %>
                 <div class="form-group">
                     <input type="number" class="form-control" placeholder="Precio"  name="precio" required />
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control" placeholder="Cantidad"  name="cantidad" required />
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Descripción"  name="desc" required />

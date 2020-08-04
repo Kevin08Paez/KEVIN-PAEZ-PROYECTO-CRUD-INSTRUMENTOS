@@ -48,8 +48,9 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Marca</th>
                         <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
                         <th scope="col">Descripción</th>
-                        <th colspan="2">Opciones</th>
+                        <th colspan="3">Opciones</th>
                     </tr>
                 </thead>
                 <%
@@ -61,9 +62,12 @@
                         <td scope="row"><%=instrumento.getNombre()%></td>
                         <td scope="row"><%=instrumento.getMarca()%></td>
                         <td scope="row"><%=instrumento.getPrecio()%></td>
+                        <td scope="row"><%= instrumento.getCantidad() %></td>
                         <td scope="row"><%=instrumento.getDescripcion()%></td>
+                        
                         <td><a class="btn btn-warning btn-block" href="formularioInstrumentos.jsp?idInstru=<%=instrumento.getIdInstru()%>">Editar Instrumento</a></td>
                         <td><a class="btn btn-danger btn-block" href="eliminarInstrumento.jsp?idInstru=<%=instrumento.getIdInstru()%>"> Eliminar Instrumento</a></td>
+                        <td><a class="btn btn btn-primary" href="ordenProductos.jsp?idInstru=<%=instrumento.getIdInstru()%>&cantidad=<%= instrumento.getCantidad() %>">Comprar</a> </td>
                     </tr>
                 </tbody>
                 <%}%>
@@ -72,9 +76,9 @@
         <br>
         <div class="container show-top-margin separate-rows tall-rows">
             <a class="btn btn-success btn-black" href="formularioInstrumentos.jsp">Agregar Instrumento </a>
-            <a class="btn btn-secondary btn-black" href="catalogoMarca.jsp">Catálogo de Marcas</a>     
+            <a class="btn btn-secondary btn-black" href="catalogoMarca.jsp">Catálogo de Marcas</a>       
         </div>
-
+        <br><br><br>
             
     </body>
 </html>
