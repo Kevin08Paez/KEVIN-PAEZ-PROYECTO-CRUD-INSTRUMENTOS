@@ -10,7 +10,7 @@
 <%
     boolean resultado, result2;
     VentaTotalBD venta = new VentaTotalBD();
-    resultado = venta.InsertarVenta(new VentaTotal(Integer.parseInt(request.getParameter("idInstru")), request.getParameter("nombre"), Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("cantidad")), Double.parseDouble(request.getParameter("total"))  ));
+    resultado = venta.InsertarVenta(new VentaTotal(Integer.parseInt(request.getParameter("idInstru")), request.getParameter("idOrden"), request.getParameter("nombre"), Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("cantidad")), Double.parseDouble(request.getParameter("total"))  ));
     
     VentaTotalBD update = new VentaTotalBD();
     result2= update.ActualizarDatos(new VentaTotal(Integer.parseInt(request.getParameter("idInstru")) )); 

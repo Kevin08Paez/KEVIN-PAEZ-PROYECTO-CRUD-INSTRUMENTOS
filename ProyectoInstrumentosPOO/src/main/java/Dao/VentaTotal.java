@@ -5,6 +5,7 @@ package Dao;
 public class VentaTotal {
     private int idCompra;
     private int idInstru;
+    private String idOrden;
     private String nombre;
     private Double precio;
     private int cantidad;
@@ -14,17 +15,19 @@ public class VentaTotal {
         
     }
 
-    public VentaTotal(int idCompra, int idInstru, String nombre, Double precio, int cantidad, Double total) {
+    public VentaTotal(int idCompra, int idInstru, String idOrden, String nombre, Double precio, int cantidad, Double total) {
         this.idCompra = idCompra;
         this.idInstru = idInstru;
+        this.idOrden = idOrden;
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
         this.total = total;
     }
 
-    public VentaTotal(int idInstru, String nombre, Double precio, int cantidad, Double total) {
+    public VentaTotal(int idInstru, String idOrden, String nombre, Double precio, int cantidad, Double total) {
         this.idInstru = idInstru;
+        this.idOrden = idOrden;
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;
@@ -52,7 +55,15 @@ public class VentaTotal {
     public void setIdInstru(int idInstru) {
         this.idInstru = idInstru;
     }
+    
+    public String getIdOrden() {
+        return idOrden;
+    }
 
+    public void setIdOrden(String idOrden) {
+        this.idOrden = idOrden;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -76,8 +87,6 @@ public class VentaTotal {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-
-
 
     public Double getTotal() {
         return total;

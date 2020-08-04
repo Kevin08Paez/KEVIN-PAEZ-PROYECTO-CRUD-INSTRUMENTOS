@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="ordencompra.*"%>
+<%@page import="Dao.*"%>
 <%@page import="java.text.SimpleDateFormat"%> 
 <%@page import="java.util.Date"%> 
 <%@page import="java.text.DateFormat"%> 
@@ -13,6 +13,7 @@
 <%
     int idOrden, idProducto, cantidad;
     boolean resultado;
+    String nom="";
     OrdenCompraBD fecha = new OrdenCompraBD();
     resultado = fecha.pruebafecha(); 
     
@@ -22,6 +23,9 @@
     
     OrdenCompraBD fechayhora = new OrdenCompraBD();
     idOrden = fechayhora.BuscarIdOrden(hourdateFormat.format(date));
+    
+    InstrumentoBD instrumento = new InstrumentoBD();
+    nom = instrumento.BuscarInstrumento(new Instrumento(Integer.parseInt(request.getParameter("idInstru"))));
     
     idProducto = Integer.parseInt(request.getParameter("idInstru"));
     cantidad = Integer.parseInt(request.getParameter("cantidad"));
@@ -39,15 +43,17 @@
             <table class="table table-striped table-hover">
                 <thead class="thead-green">
                     <tr>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">idProducto</th>
+                        <th scope="col">IdProducto</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Disponible</th>
                         <th scope="col">Cantidad</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td scope="row"><%=hourdateFormat.format(date)%></td>
                         <td scope="row"><%=idProducto%></td>
+                        <td scope="row"><%=nom%></td>
+                        <td scope="row"><%=cantidad%></td>
                         <td scope="row">
                             <form action="ventaProducto.jsp" method="GET" class="form">
                                 <input type="hidden" value="<%=idOrden%>" class="form-control" name="idOrden" />

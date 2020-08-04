@@ -8,11 +8,12 @@
 <%@page import="Dao.*"%>
 <!DOCTYPE html>
 <%
-    int cantidad, idProducto;
+    int cantidad, idProducto, idOrden;
     String nom="";
     double pre;
     idProducto = Integer.parseInt(request.getParameter("idProducto"));
     cantidad = Integer.parseInt(request.getParameter("cantidad"));
+    idOrden = Integer.parseInt(request.getParameter("idOrden"));
     
     InstrumentoBD instrumento = new InstrumentoBD();
     nom = instrumento.BuscarInstrumento(new Instrumento(Integer.parseInt(request.getParameter("idProducto"))));
@@ -52,7 +53,7 @@
             </table>
         </div>
         <div class="container show-top-margin separate-rows tall-rows">
-            <a class="btn btn-success btn-black" href="ventaTotal.jsp?idInstru=<%=idProducto%>&nombre=<%=nom%>&precio=<%=pre%>&cantidad=<%=cantidad%>&total=<%=total%>">Guardar</a>
+            <a class="btn btn-success btn-black" href="ventaTotal.jsp?idInstru=<%=idProducto%>&idOrden=<%=idOrden%>&nombre=<%=nom%>&precio=<%=pre%>&cantidad=<%=cantidad%>&total=<%=total%>">Guardar</a>
             <a class="btn btn-danger btn-black" href="index.jsp">Cancelar</a>       
         </div>
     </body>
