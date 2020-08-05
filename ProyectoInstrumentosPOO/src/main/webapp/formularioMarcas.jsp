@@ -40,7 +40,7 @@
                 <br>
                 <div class="form-group">
                     <input type="submit" class="btn btn-success btn-black"  value="Enviar"/>
-                    <a class="btn btn-info btn-black" href="catalogoMarca.jsp">Regresar</a>
+                    <a class="btn btn-primary btn-black" href="catalogoMarca.jsp">Regresar</a>
                 </div>
             </form>
 

@@ -9,7 +9,7 @@
 <%
     boolean resultado;
     InstrumentoBD instrumento = new InstrumentoBD();
-    resultado = instrumento.EditarInstrumento(new Instrumento(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"), request.getParameter("idmarca")));
+    resultado = instrumento.EditarInstrumento(new Instrumento(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"), Double.parseDouble(request.getParameter("precio")), Integer.parseInt(request.getParameter("cantidad")) ));
 %>
 
 <html>

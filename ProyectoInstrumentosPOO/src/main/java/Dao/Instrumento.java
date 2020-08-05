@@ -42,12 +42,22 @@ public class Instrumento {
         this.idInstru = idInstru;
     }
 
-    public Instrumento(int idInstru, String nombre, String marca) {
+    public Instrumento(int idInstru, String nombre, int cantidad) {
         this.idInstru = idInstru;
         this.nombre = nombre;
-        this.marca = marca;
+        this.cantidad = cantidad;
     }
 
+    public Instrumento(int idInstru, String nombre, Double precio, int cantidad) {
+        this.idInstru = idInstru;
+        this.nombre = nombre;
+        this.precio = precio;
+        this.cantidad = cantidad;
+    }
+    
+    
+    
+    
     public int getIdInstru() {
         return idInstru;
     }

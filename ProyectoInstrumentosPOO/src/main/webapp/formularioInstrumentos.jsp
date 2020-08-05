@@ -13,14 +13,20 @@
     String titulo = "Agregar Instrumento", nom = "";
     String ruta = "agregarInstrumento.jsp";
 
-    int id = 0;
+    int id = 0, cant=0;
+    double pre=0.0;
     if (request.getParameter("idInstru") != null) {
         id = Integer.parseInt(request.getParameter("idInstru"));
         titulo = "Editar Instrumento";
         ruta = "editarInstrumento.jsp";
         InstrumentoBD instrumento = new InstrumentoBD();
         nom = instrumento.BuscarInstrumento(new Instrumento(Integer.parseInt(request.getParameter("idInstru"))));
-
+        
+        InstrumentoBD cantidad = new InstrumentoBD();
+        cant = cantidad.BuscarCantidad(new Instrumento(Integer.parseInt(request.getParameter("idInstru"))));
+        
+        InstrumentoBD precio = new InstrumentoBD();
+        pre = precio.BuscarPrecio(new Instrumento(Integer.parseInt(request.getParameter("idInstru"))));
     }
 %>
 <html>
@@ -38,9 +44,13 @@
                     <input type="hidden" value="<%=id%>" class="form-control" placeholder="id" name="id" />
                 </div>
                 <% }%>
+                
                 <div class="form-group">
                     <input type="text" value="<%=nom%>" class="form-control" placeholder="Nombre Instrumento" name="nombre" required/>
                 </div>
+                
+
+                <% if (id == 0) { %>
                 <div class="form-group">
                     <select class="form-control" name="idmarca" required >
                         <option value="">Selecciona una opción</option>
@@ -53,14 +63,16 @@
                         %>   
                     </select>
                 </div>
-
+                <% }%>
+                
+                <div class="form-group">
+                    <input type="number" value="<%=pre%>" class="form-control" min="1" placeholder="Precio"  name="precio" required />
+                </div>
+                <div class="form-group">
+                    <input type="number" value="<%=cant%>" class="form-control" min="1" placeholder="Stock"  name="cantidad" required />
+                </div>
+                
                 <% if (id == 0) { %>
-                <div class="form-group">
-                    <input type="number" class="form-control" placeholder="Precio"  name="precio" required />
-                </div>
-                <div class="form-group">
-                    <input type="number" class="form-control" placeholder="Cantidad"  name="cantidad" required />
-                </div>
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Descripción"  name="desc" required />
                 </div>
@@ -68,7 +80,7 @@
                 <br>
                 <div class="form-group">
                     <input type="submit" class="btn btn-success btn-black"  value="Enviar"/>
-                    <a class="btn btn-info btn-black" href="index.jsp">Regresar</a>
+                    <a class="btn btn-primary btn-black" href="index.jsp">Regresar</a>
                 </div>
             </form>
 

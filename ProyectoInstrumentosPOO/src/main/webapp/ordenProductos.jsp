@@ -45,7 +45,7 @@
                     <tr>
                         <th scope="col">IdProducto</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Disponible</th>
+                        <th scope="col">Disponible en Stock</th>
                         <th scope="col">Cantidad</th>
                     </tr>
                 </thead>
@@ -61,7 +61,7 @@
                                 <input type="number" class="form-control" min="1" max="<%=cantidad%>" name="cantidad"> <br>
                                 <div class="form-group">
                                     <input type="submit" class="btn btn-success btn-black"  value="Guardar"/>
-                                    <a class="btn btn-info btn-black" href="index.jsp">Regresar</a>
+                                    <a class="btn btn-primary btn-black" href="index.jsp">Regresar</a>
                                 </div>
                             </form>
                         </td>

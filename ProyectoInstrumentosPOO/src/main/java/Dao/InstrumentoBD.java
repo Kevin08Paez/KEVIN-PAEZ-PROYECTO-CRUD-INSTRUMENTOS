@@ -14,7 +14,7 @@ public class InstrumentoBD {
             +"instrumentos.precio, instrumentos.cantidad, instrumentos.descripcion FROM instrumentos JOIN cat_marca ON instrumentos.id_marca=cat_marca.idMarca ";
     private static final String Insertado="INSERT INTO instrumentos SET nombre=?, id_marca=?, precio=?, cantidad=?, descripcion=?";
     private static final String Buscar="SELECT * FROM instrumentos WHERE idInstru=?";
-    private static final String EditarInstru="UPDATE instrumentos SET nombre=?, id_marca=? WHERE idInstru=? ";
+    private static final String EditarInstru="UPDATE instrumentos SET nombre=?, precio=?, cantidad=? WHERE idInstru=? ";
     private static final String Eliminar="DELETE FROM instrumentos WHERE idInstru=?";
     private Connection conexion = new Conexion().getConexion();
     private PreparedStatement stmt;
@@ -68,12 +68,23 @@ public class InstrumentoBD {
         return precio;
     }
     
+    public int BuscarCantidad(Instrumento instrumento) throws SQLException{
+        int cantidad;
+        this.stmt=this.conexion.prepareStatement(Buscar);
+        this.stmt.setInt(1, instrumento.getIdInstru());
+        this.rs=this.stmt.executeQuery();
+        this.rs.next();
+        cantidad=this.rs.getInt("cantidad");
+        
+        return cantidad;
+    }
     
     public boolean EditarInstrumento(Instrumento instrumento) throws SQLException{
         this.stmt=this.conexion.prepareStatement(EditarInstru);
         this.stmt.setString(1, instrumento.getNombre());
-        this.stmt.setString(2, instrumento.getMarca());
-        this.stmt.setInt(3, instrumento.getIdInstru());
+        this.stmt.setDouble(2, instrumento.getPrecio());
+        this.stmt.setInt(3, instrumento.getCantidad());
+        this.stmt.setInt(4, instrumento.getIdInstru());
         
         if(this.stmt.executeUpdate()==1){
             return true;
